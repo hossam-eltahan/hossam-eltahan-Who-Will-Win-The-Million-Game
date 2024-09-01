@@ -1,0 +1,103 @@
+.admin-panel {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f4f4f9;
+    color: #333;
+  }
+  
+  .control-panel {
+    flex: 2;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .winner-board {
+    flex: 1;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    padding: 30px;
+    width: 300px; /* Increased width */
+    height: 400px; /* Increased height */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .form input, .form select, .form button {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .form button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .form button:hover {
+    background-color: #45a049;
+  }
+  
+  .questions-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .question-box {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    width: 30%;
+  }
+  
+  .question-box ul {
+    padding: 0;
+    list-style: none;
+  }
+  
+  .question-box button {
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 5px 10px;
+    border: none;
+    color: white;
+    background-color: #f44336;
+    cursor: pointer;
+  }
+  
+  .question-box button:hover {
+    background-color: #c62828;
+  }
+  
+  .winner-board h2 {
+    margin-bottom: 20px;
+    font-size: 24px; /* Increased font size */
+  }
+  
+  .winner-board ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .winner-board li {
+    margin-bottom: 10px;
+    font-size: 18px; /* Increased font size */
+  }
+  

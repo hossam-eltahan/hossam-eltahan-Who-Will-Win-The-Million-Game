@@ -1,0 +1,57 @@
+/* WinnerBoard.css */
+
+.winner-board-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full height of the viewport */
+    width: 100vw; /* Full width of the viewport */
+    background-color: #e6f7ff; /* Light blue background for a fresh look */
+    color: #003366; /* Dark blue text for contrast */
+    padding: 20px; /* Add padding for some space around the content */
+    box-sizing: border-box;
+}
+  
+.title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #00509e; /* Darker blue for the title */
+    text-align: center; /* Center the title horizontally */
+}
+  
+.winners-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Full width to center horizontally */
+    max-width: 600px; /* Limit the maximum width of the list container */
+    text-align: center; /* Center text within each list item */
+    margin-top: 20px; /* Add some space between the title and the list */
+}
+  
+.winners-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: auto; /* Auto width to align items centrally */
+}
+  
+.winners-list li {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #ffffff; /* White background for list items */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for a subtle 3D effect */
+    width: auto; /* Auto width to avoid too much space */
+    max-width: 300px; /* Maximum width for list items */
+    text-align: center;
+}
+  
+.no-winners {
+    font-size: 1.2rem;
+    color: #666; /* Gray color for no winners text */
+    text-align: center; /* Center the no winners text */
+}
