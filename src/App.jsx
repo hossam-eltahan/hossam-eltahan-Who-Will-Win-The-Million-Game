@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import data from "./components/data";
@@ -142,3 +143,4 @@ const App = () => {
 };
 
 export default App;
+
