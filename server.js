@@ -5,7 +5,9 @@ const app = express();
 const port = 5000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://your-vercel-domain.vercel.app',  // Allow requests from your Vercel frontend
+}));
 app.use(express.json()); // Built-in JSON parser
 
 // API Endpoints
