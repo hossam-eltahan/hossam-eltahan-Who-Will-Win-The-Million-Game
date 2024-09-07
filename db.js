@@ -1,10 +1,17 @@
-const mysql = require('mysql2/promise');
+const mysql = require('mysql');
 
-const db = mysql.createPool({
-  host: 'b2zyfptjbv8topy3trho-mysql.services.clever-cloud.com',
-  user: 'uwpipfr3xds97kn1',  // Default XAMPP username
-  password: 'dOQ90tzqmeWgzhGZ7KXw',  // Leave blank if there's no password
-  database: 'b2zyfptjbv8topy3trho'
+const connection = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT || 3306,
 });
 
-module.exports = db;
+connection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to MySQL:', err);
+    return;
+  }
+  console.log('Connected to MySQL database');
+});
