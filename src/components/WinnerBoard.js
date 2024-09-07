@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./WinnerBoard.css";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://hossam-eltahan-who-will-win-the-million-game.cleverapps.io/api";
 
 const WinnerBoard = () => {
   const [winners, setWinners] = useState([]);

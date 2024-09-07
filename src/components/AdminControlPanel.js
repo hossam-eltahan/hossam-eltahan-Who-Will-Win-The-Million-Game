@@ -11,7 +11,7 @@ const AdminControlPanel = () => {
   // Fetch questions from the API
   const fetchQuestions = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/questions");
+      const response = await fetch("https://hossam-eltahan-Who-Will-Win-The-Million-Game.cleverapps.io/api/questions");
       if (!response.ok) {
         throw new Error('Error fetching questions');
       }
