@@ -1,13 +1,27 @@
 import React, { useState, useEffect } from "react";
 import "./WinnerBoard.css";
 
+const API_URL = "http://localhost:5000/api";
+
 const WinnerBoard = () => {
   const [winners, setWinners] = useState([]);
 
+  const fetchWinners = async () => {
+    try {
+      const response = await fetch(`${API_URL}/winners`);
+      if (!response.ok) {
+        throw new Error('Error fetching winners');
+      }
+      const data = await response.json();
+      console.log("Fetched winners:", data);
+      setWinners(data);
+    } catch (error) {
+      console.error("Error fetching winners:", error);
+    }
+  };
+
   useEffect(() => {
-    // Fetch winners from localStorage
-    const savedWinners = JSON.parse(localStorage.getItem("winners")) || [];
-    setWinners(savedWinners);
+    fetchWinners();
   }, []);
 
   return (
@@ -18,8 +32,8 @@ const WinnerBoard = () => {
           <p className="no-winners">No winners yet.</p>
         ) : (
           <ul>
-            {winners.map((winner, index) => (
-              <li key={index} className="winner-item">{winner}</li>
+            {winners.map((winner) => (
+              <li key={winner.id} className="winner-item">{winner.name}</li>
             ))}
           </ul>
         )}
