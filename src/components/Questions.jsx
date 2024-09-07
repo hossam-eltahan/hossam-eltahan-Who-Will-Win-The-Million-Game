@@ -23,7 +23,7 @@ const Questions = ({
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await fetch("https://hossam-eltahan-who-will-win-the-million-game.cleverapps.io/api/questions");
+        const response = await fetch("http://localhost:5000/api/questions");
         const data = await response.json();
         setQuestions(data);
       } catch (error) {
