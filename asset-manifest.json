@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.20d46a87.css",
+    "main.js": "/static/js/main.36f8363e.js",
+    "static/js/885.8348c364.chunk.js": "/static/js/885.8348c364.chunk.js",
+    "static/js/453.f0e33eac.chunk.js": "/static/js/453.f0e33eac.chunk.js",
+    "static/media/bg.jpg": "/static/media/bg.c137ccd722d64133b4df.jpg",
+    "static/media/congrats.m4a": "/static/media/congrats.58308e77d0648e746dcd.m4a",
+    "static/media/play.mp3": "/static/media/play.8e5f6d1d81d4e1414b95.mp3",
+    "static/media/logo.png": "/static/media/logo.4f6026f3ffaa53999ee1.png",
+    "static/media/play.m4a": "/static/media/play.83d102d25ba0d49dbfad.m4a",
+    "static/media/wrong.mp3": "/static/media/wrong.6e5d1b77d86423bd3d97.mp3",
+    "static/media/correct.m4a": "/static/media/correct.f829a3d0b0bedaab9094.m4a",
+    "static/media/general-click.wav": "/static/media/general-click.355dfaef3287db2f5d4f.wav",
+    "static/media/clock-tick.wav": "/static/media/clock-tick.8c037a43695b4ffbfd99.wav",
+    "index.html": "/index.html",
+    "main.20d46a87.css.map": "/static/css/main.20d46a87.css.map",
+    "main.36f8363e.js.map": "/static/js/main.36f8363e.js.map",
+    "885.8348c364.chunk.js.map": "/static/js/885.8348c364.chunk.js.map",
+    "453.f0e33eac.chunk.js.map": "/static/js/453.f0e33eac.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.20d46a87.css",
+    "static/js/main.36f8363e.js"
+  ]
+}
