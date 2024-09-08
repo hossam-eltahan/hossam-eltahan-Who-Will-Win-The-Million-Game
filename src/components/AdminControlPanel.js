@@ -8,13 +8,26 @@ const AdminControlPanel = () => {
   const [correctAnswer, setCorrectAnswer] = useState(0);
   const [editingIndex, setEditingIndex] = useState(null);
 
+  // Fetch questions from the API
+  const fetchQuestions = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/questions");
+      if (!response.ok) {
+        throw new Error('Error fetching questions');
+      }
+      const data = await response.json();
+      setQuestions(data);
+    } catch (error) {
+      console.error("Error fetching questions:", error);
+    }
+  };
+
+  // Fetch questions when the component mounts
   useEffect(() => {
-    // Fetch questions from localStorage or initialize
-    const savedQuestions = JSON.parse(localStorage.getItem("questions")) || [];
-    setQuestions(savedQuestions);
+    fetchQuestions();
   }, []);
 
-  const handleAddOrUpdateQuestion = () => {
+  const handleAddOrUpdateQuestion = async () => {
     if (!questionText || answers.some(answer => !answer)) {
       alert("Please fill out all fields.");
       return;
@@ -26,21 +39,64 @@ const AdminControlPanel = () => {
       correctAnswer: correctAnswer,
     };
 
-    const updatedQuestions = editingIndex !== null
-      ? questions.map((q, index) =>
-          index === editingIndex ? newQuestion : q
-        )
-      : [...questions, newQuestion];
+    try {
+      if (editingIndex !== null) {
+        // Update an existing question
+        const response = await fetch(
+          `http://localhost:5000/api/questions/${questions[editingIndex].id}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newQuestion),
+          }
+        );
+        if (!response.ok) {
+          throw new Error("Failed to update question");
+        }
 
-    setQuestions(updatedQuestions);
-    localStorage.setItem("questions", JSON.stringify(updatedQuestions));
-    resetForm();
+        // Update the state immediately
+        const updatedQuestions = [...questions];
+        updatedQuestions[editingIndex] = { ...newQuestion, id: questions[editingIndex].id };
+        setQuestions(updatedQuestions);
+      } else {
+        // Add a new question
+        const response = await fetch("http://localhost:5000/api/questions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newQuestion),
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to add question");
+        }
+
+        const addedQuestion = await response.json();
+        // Update the state with the new question
+        setQuestions([...questions, { ...newQuestion, id: addedQuestion.id }]);
+      }
+
+      resetForm();
+    } catch (error) {
+      console.error("Error saving question:", error);
+    }
   };
 
-  const handleRemoveQuestion = (index) => {
-    const updatedQuestions = questions.filter((_, i) => i !== index);
-    setQuestions(updatedQuestions);
-    localStorage.setItem("questions", JSON.stringify(updatedQuestions));
+  const handleRemoveQuestion = async (index) => {
+    try {
+      await fetch(`http://localhost:5000/api/questions/${questions[index].id}`, {
+        method: "DELETE",
+      });
+
+      // Remove the question locally
+      const updatedQuestions = questions.filter((_, i) => i !== index);
+      setQuestions(updatedQuestions);
+    } catch (error) {
+      console.error("Error deleting question:", error);
+    }
   };
 
   const handleEditQuestion = (index) => {
@@ -120,4 +176,3 @@ const AdminControlPanel = () => {
 };
 
 export default AdminControlPanel;
-

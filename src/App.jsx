@@ -52,10 +52,27 @@ const App = () => {
     if (questionNumber === 16) {
       setCongrats(true);
       congratSound();
-      // Save the user to the winner board
-      const winners = JSON.parse(localStorage.getItem("winners")) || [];
-      winners.push(user);
-      localStorage.setItem("winners", JSON.stringify(winners));
+
+      // Save the winner to the database
+      const saveWinnerToDatabase = async () => {
+        try {
+          const response = await fetch("http://localhost:5000/api/winners", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name: user }),
+          });
+          if (!response.ok) {
+            throw new Error("Failed to save winner");
+          }
+          console.log("Winner saved successfully");
+        } catch (error) {
+          console.error("Error saving winner:", error);
+        }
+      };
+
+      saveWinnerToDatabase();
     }
   }, [questionNumber, user, congratSound]);
 
@@ -142,3 +159,4 @@ const App = () => {
 };
 
 export default App;
+

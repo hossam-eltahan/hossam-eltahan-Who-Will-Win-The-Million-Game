@@ -65,4 +65,3 @@ const User = ({ setUser }) => {
 };
 
 export default User;
-
