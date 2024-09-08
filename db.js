@@ -1,10 +1,10 @@
 const mysql = require('mysql2/promise');
 
 const db = mysql.createPool({
-  host: 'sql312.infinityfree.com',
-  user: 'if0_37264344',  // Default XAMPP username
-  password: '9A0MSJElepz',  // Leave blank if there's no password
-  database: 'if0_37264344_millionaire_game'
+  host: 'b2zyfptjbv8topy3trho-mysql.services.clever-cloud.com',
+  user: 'uwpipfr3xds97kn1',  // Default XAMPP username
+  password: 'dOQ90tzqmeWgzhGZ7KXw',  // Leave blank if there's no password
+  database: 'b2zyfptjbv8topy3trho'
 });
 
 module.exports = db;
