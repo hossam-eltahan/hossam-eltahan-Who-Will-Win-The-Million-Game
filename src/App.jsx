@@ -6,7 +6,6 @@ import Timer from "./components/Timer";
 import User from "./components/User";
 import useSound from "use-sound";
 import congrat from "./assets/sounds/congrats.m4a";
-import playSound from "./assets/sounds/play.mp3";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import AdminControlPanel from './components/AdminControlPanel';
 import WinnerBoard from './components/WinnerBoard'; // Import WinnerBoard
