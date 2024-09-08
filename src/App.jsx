@@ -6,6 +6,7 @@ import Timer from "./components/Timer";
 import User from "./components/User";
 import useSound from "use-sound";
 import congrat from "./assets/sounds/congrats.m4a";
+import playSound from "./assets/sounds/play.mp3";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import AdminControlPanel from './components/AdminControlPanel';
 import WinnerBoard from './components/WinnerBoard'; // Import WinnerBoard
@@ -51,27 +52,10 @@ const App = () => {
     if (questionNumber === 16) {
       setCongrats(true);
       congratSound();
-
-      // Save the winner to the database
-      const saveWinnerToDatabase = async () => {
-        try {
-          const response = await fetch("http://localhost:5000/api/winners", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ name: user }),
-          });
-          if (!response.ok) {
-            throw new Error("Failed to save winner");
-          }
-          console.log("Winner saved successfully");
-        } catch (error) {
-          console.error("Error saving winner:", error);
-        }
-      };
-
-      saveWinnerToDatabase();
+      // Save the user to the winner board
+      const winners = JSON.parse(localStorage.getItem("winners")) || [];
+      winners.push(user);
+      localStorage.setItem("winners", JSON.stringify(winners));
     }
   }, [questionNumber, user, congratSound]);
 

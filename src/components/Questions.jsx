@@ -1,3 +1,5 @@
+
+questions.js
 import React, { useEffect, useState } from "react";
 import useSound from "use-sound";
 import click from "../assets/sounds/general-click.wav";
@@ -21,19 +23,10 @@ const Questions = ({
   const [answerStates, setAnswerStates] = useState({}); // Track the state of each answer
 
   useEffect(() => {
-    const fetchQuestions = async () => {
-      try {
-        const response = await fetch("http://localhost:5000/api/questions");
-        const data = await response.json();
-        setQuestions(data);
-      } catch (error) {
-        console.error("Error fetching questions:", error);
-      }
-    };
-  
-    fetchQuestions();
+    // Fetch questions from localStorage
+    const savedQuestions = JSON.parse(localStorage.getItem("questions")) || [];
+    setQuestions(savedQuestions);
   }, []);
-  
 
   useEffect(() => {
     if (questions.length > 0 && questionNumber > 0) {
@@ -103,4 +96,3 @@ const Questions = ({
 };
 
 export default Questions;
-
