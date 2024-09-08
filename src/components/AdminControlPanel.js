@@ -62,7 +62,7 @@ const AdminControlPanel = () => {
         setQuestions(updatedQuestions);
       } else {
         // Add a new question
-        const response = await fetch("http://localhost:5000/api/questions", {
+        const response = await fetch("http://192.168.0.100:5000/api/questions", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -87,7 +87,7 @@ const AdminControlPanel = () => {
 
   const handleRemoveQuestion = async (index) => {
     try {
-      await fetch(`http://localhost:5000/api/questions/${questions[index].id}`, {
+      await fetch(`http://192.168.0.100:5000/api/questions/${questions[index].id}`, {
         method: "DELETE",
       });
 
