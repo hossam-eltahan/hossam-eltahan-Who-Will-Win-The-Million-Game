@@ -55,7 +55,7 @@ const App = () => {
       // Save the winner to the database
       const saveWinnerToDatabase = async () => {
         try {
-          const response = await fetch("http://localhost:5000/api/winners", {
+          const response = await fetch("http://192.168.0.100:5000/api/winners", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

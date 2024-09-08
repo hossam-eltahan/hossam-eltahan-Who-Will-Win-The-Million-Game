@@ -11,7 +11,7 @@ const AdminControlPanel = () => {
   // Fetch questions from the API
   const fetchQuestions = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/questions");
+      const response = await fetch("http://192.168.0.100:5000/api/questions");
       if (!response.ok) {
         throw new Error('Error fetching questions');
       }
@@ -43,7 +43,7 @@ const AdminControlPanel = () => {
       if (editingIndex !== null) {
         // Update an existing question
         const response = await fetch(
-          `http://localhost:5000/api/questions/${questions[editingIndex].id}`,
+          `http://192.168.0.100:5000/api/questions/${questions[editingIndex].id}`,
           {
             method: "PUT",
             headers: {
