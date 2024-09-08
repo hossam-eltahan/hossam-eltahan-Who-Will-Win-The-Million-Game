@@ -7,7 +7,11 @@ const port = process.env.PORT ||5000;
 // Middleware
 app.use(cors());
 app.use(express.json()); // Built-in JSON parser
-
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 // API Endpoints
 
 // Get all questions
