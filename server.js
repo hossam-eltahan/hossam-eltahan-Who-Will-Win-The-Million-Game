@@ -128,5 +128,5 @@ app.post('/api/winners', async (req, res) => {
 
 // Start the server
 app.listen(port, '192.168.0.100', () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running at http://192.168.0.100:${port}`);
 });
