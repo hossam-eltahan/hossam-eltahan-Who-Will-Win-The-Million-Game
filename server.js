@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const db = require('./db');  // Import the database connection
 const app = express();
-const port = 5000;
+const port = process.env.PORT ||5000;
 
 // Middleware
 app.use(cors());
@@ -28,17 +28,17 @@ app.get('/api/questions', async (req, res) => {
 // Add a new question
 app.post('/api/questions', async (req, res) => {
   const { question, answers, correctAnswer } = req.body;
-  
-  // Validate the input
+
   if (!question || !answers || correctAnswer === undefined || !Array.isArray(answers) || answers.length !== 4) {
     return res.status(400).json({ error: 'Missing or invalid required fields' });
   }
 
   try {
-    const [result] = await db.query(
-      'INSERT INTO questions (question, answers, correctAnswer) VALUES (?, ?, ?)', 
-      [question, JSON.stringify(answers), correctAnswer]
-    );
+    const [result] = await db.query('INSERT INTO questions (question, answers, correctAnswer) VALUES (?, ?, ?)', [
+      question,
+      JSON.stringify(answers),
+      correctAnswer
+    ]);
     res.status(201).json({ id: result.insertId, message: 'Question added successfully' });
   } catch (err) {
     console.error('Error adding question:', err.message);
@@ -51,7 +51,6 @@ app.put('/api/questions/:id', async (req, res) => {
   const { id } = req.params;
   const { question, answers, correctAnswer } = req.body;
   
-  // Validate the input
   if (!question || !answers || correctAnswer === undefined || !Array.isArray(answers) || answers.length !== 4) {
     return res.status(400).json({ error: 'Missing or invalid required fields' });
   }
@@ -105,8 +104,7 @@ app.get('/api/winners', async (req, res) => {
 // Add a new winner
 app.post('/api/winners', async (req, res) => {
   const { name } = req.body;
-  
-  // Validate input
+
   if (!name || typeof name !== 'string') {
     return res.status(400).json({ error: 'Name is required and should be a string' });
   }
@@ -124,4 +122,3 @@ app.post('/api/winners', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
-
