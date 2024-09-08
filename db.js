@@ -1,17 +1,10 @@
-const mysql = require('mysql');
+const mysql = require('mysql2/promise');
 
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  port: process.env.DB_PORT || 3306,
+const db = mysql.createPool({
+  host: 'sql312.infinityfree.com',
+  user: 'if0_37264344',  // Default XAMPP username
+  password: '9A0MSJElepz',  // Leave blank if there's no password
+  database: 'if0_37264344_millionaire_game'
 });
 
-connection.connect((err) => {
-  if (err) {
-    console.error('Error connecting to MySQL:', err);
-    return;
-  }
-  console.log('Connected to MySQL database');
-});
+module.exports = db;
