@@ -23,7 +23,7 @@ const Questions = ({
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await fetch("http://192.168.0.100:5000/api/questions");
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/questions`);
         const data = await response.json();
         setQuestions(data);
       } catch (error) {

@@ -11,7 +11,7 @@ const AdminControlPanel = () => {
   // Fetch questions from the API
   const fetchQuestions = async () => {
     try {
-      const response = await fetch("http://192.168.0.100:5000/api/questions");
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/questions`);
       if (!response.ok) {
         throw new Error('Error fetching questions');
       }
@@ -43,7 +43,7 @@ const AdminControlPanel = () => {
       if (editingIndex !== null) {
         // Update an existing question
         const response = await fetch(
-          `http://192.168.0.100:5000/api/questions/${questions[editingIndex].id}`,
+          `${process.env.REACT_APP_BACKEND_URL}/api/questions/${questions[editingIndex].id}`,
           {
             method: "PUT",
             headers: {
@@ -62,7 +62,7 @@ const AdminControlPanel = () => {
         setQuestions(updatedQuestions);
       } else {
         // Add a new question
-        const response = await fetch("http://192.168.0.100:5000/api/questions", {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/questions`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -87,7 +87,7 @@ const AdminControlPanel = () => {
 
   const handleRemoveQuestion = async (index) => {
     try {
-      await fetch(`http://192.168.0.100:5000/api/questions/${questions[index].id}`, {
+      await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/questions/${questions[index].id}`, {
         method: "DELETE",
       });
 
