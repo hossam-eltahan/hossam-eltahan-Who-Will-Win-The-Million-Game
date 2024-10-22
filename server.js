@@ -2,14 +2,20 @@ const express = require('express');
 const cors = require('cors');
 const db = require('./db');  // Import the database connection
 const app = express();
-const port = 5000;
+const port = process.env.PORT ||5000;
 
 // Middleware
 app.use(cors({
-  origin: 'https://your-vercel-domain.vercel.app',  // Allow requests from your Vercel frontend
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 app.use(express.json()); // Built-in JSON parser
-
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 // API Endpoints
 
 // Get all questions
@@ -121,6 +127,6 @@ app.post('/api/winners', async (req, res) => {
 });
 
 // Start the server
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+app.listen(port, '192.168.0.100', () => {
+  console.log(`Server running at http://192.168.0.100:${port}`);
 });

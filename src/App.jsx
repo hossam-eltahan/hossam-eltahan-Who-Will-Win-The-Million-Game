@@ -6,7 +6,6 @@ import Timer from "./components/Timer";
 import User from "./components/User";
 import useSound from "use-sound";
 import congrat from "./assets/sounds/congrats.m4a";
-import playSound from "./assets/sounds/play.mp3";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import AdminControlPanel from './components/AdminControlPanel';
 import WinnerBoard from './components/WinnerBoard'; // Import WinnerBoard
@@ -56,7 +55,7 @@ const App = () => {
       // Save the winner to the database
       const saveWinnerToDatabase = async () => {
         try {
-          const response = await fetch("http://localhost:5000/api/winners", {
+          const response = await fetch("http://192.168.0.100:5000/api/winners", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -159,3 +158,4 @@ const App = () => {
 };
 
 export default App;
+

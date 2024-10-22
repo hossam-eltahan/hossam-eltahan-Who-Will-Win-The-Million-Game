@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import useSound from "use-sound";
 import clocktick from "../assets/sounds/clock-tick.wav";
 // import wrong from "../assets/sounds/wrongEnd.mp3";
@@ -15,7 +15,7 @@ const Timer = ({ questionNumber, setStop, pauseTimer }) => {
     if (pauseTimer) {
       return; // Do nothing if the timer is paused
     }
-    if (clock == 0) {
+    if (clock === 0) {
       setStop(true);
       // wrongEnd();
     }
@@ -26,7 +26,7 @@ const Timer = ({ questionNumber, setStop, pauseTimer }) => {
       setclock(clock - 1);
     }, 1000);
     return () => clearInterval(interval);
-  }, [clock, setStop, pauseTimer]);
+  }, [clock, setStop, pauseTimer,clockticked]);
 
   return clock;
 };
